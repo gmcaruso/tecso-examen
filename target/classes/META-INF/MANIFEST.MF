@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Implementation-Title: test-spring-boot-level-1
+Premain-Class: coop.tecso.examen.NopPreMain
+Implementation-Version: 0.0.1
+Built-By: gabriel
+Implementation-Vendor-Id: coop.tecso
+Build-Jdk: 1.8.0_201
+Implementation-URL: https://gitlab.tecso.coop/tecso/test-spring-boot-l
+ evel-1
+Created-By: Maven Integration for Eclipse
+Main-Class: coop.tecso.examen.MainApplication
+
