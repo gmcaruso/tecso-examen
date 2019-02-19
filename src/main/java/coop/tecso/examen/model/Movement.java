@@ -3,7 +3,6 @@ package coop.tecso.examen.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Movement extends AbstractPersistentObject {
@@ -14,16 +13,7 @@ public class Movement extends AbstractPersistentObject {
 	private TypeOfMovement typeOfMovement;
 	private String description;
 	private long amount;
-	@OneToOne
-	private Account asociatedAccount;
 	
-	
-	public Account getAsociatedAccount() {
-		return asociatedAccount;
-	}
-	public void setAsociatedAccount(Account asociatedAccount) {
-		this.asociatedAccount = asociatedAccount;
-	}
 	public Date getDate() {
 		return date;
 	}

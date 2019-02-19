@@ -3,9 +3,6 @@ package coop.tecso.examen.dto;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.OneToOne;
-
-import coop.tecso.examen.model.Account;
 import coop.tecso.examen.model.TypeOfMovement;
 
 public class MovementDto implements Serializable{
@@ -17,8 +14,6 @@ public class MovementDto implements Serializable{
 	private TypeOfMovement typeOfMovement;
 	private String description;
 	private long value;
-	@OneToOne
-	private Account asociatedAccount;
 	
 	
 	public Long getId() {
@@ -51,11 +46,4 @@ public class MovementDto implements Serializable{
 	public void setValue(long value) {
 		this.value = value;
 	}
-	public Account getAsociatedAccount() {
-		return asociatedAccount;
-	}
-	public void setAsociatedAccount(Account asociatedAccount) {
-		this.asociatedAccount = asociatedAccount;
-	}
-	
 }	

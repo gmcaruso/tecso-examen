@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,7 +36,6 @@ public class MovementController {
 		for (Movement entity : movementRepository.findAll()) {
 			MovementDto dto = new MovementDto();
 			dto.setId(entity.getId());
-			dto.setAsociatedAccount(entity.getAsociatedAccount());
 			dto.setDate(entity.getDate());
 			dto.setDescription(entity.getDescription());
 			dto.setTypeOfMovement(entity.getTypeOfMovement());
@@ -48,16 +48,12 @@ public class MovementController {
 	
 	// Add movement to account
 	@PostMapping("/agregar-movimiento")
-	public void addMovementTo(@RequestParam("accountId") Long accountId, Movement movement) {
+	public void addMovementTo(@RequestParam("accountId") Long accountId, @RequestBody Movement movement) {
 		Optional<Account> account = accountRepository.findById(accountId);
 
-		movement.setAsociatedAccount(account.get());
 		Movement savedMovement = movementRepository.save(movement);
 		
 		account.get().getMovements().add(savedMovement);
 		accountRepository.save(account.get());
 	}
-	
-	
-
 }
