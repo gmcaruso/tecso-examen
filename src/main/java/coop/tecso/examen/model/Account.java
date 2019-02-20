@@ -11,7 +11,7 @@ public class Account extends AbstractPersistentObject{
 	private static final long serialVersionUID = 2754655671251821453L;
 	
 	private Long accountNumber;
-	private String currency;
+	private TypeOfCurrency currency;
 	private Long balance;
 	
 	@OneToMany
@@ -25,11 +25,11 @@ public class Account extends AbstractPersistentObject{
 		this.accountNumber = accountNumber;
 	}
 
-	public String getCurrency() {
+	public TypeOfCurrency getCurrency() {
 		return currency;
 	}
 
-	public void setCurrency(String currency) {
+	public void setCurrency(TypeOfCurrency currency) {
 		this.currency = currency;
 	}
 

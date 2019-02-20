@@ -13,8 +13,7 @@ public class MovementDto implements Serializable{
 	private Date date;
 	private TypeOfMovement typeOfMovement;
 	private String description;
-	private long value;
-	
+	private long amount;
 	
 	public Long getId() {
 		return id;
@@ -41,9 +40,9 @@ public class MovementDto implements Serializable{
 		this.description = description;
 	}
 	public long getValue() {
-		return value;
+		return amount;
 	}
 	public void setValue(long value) {
-		this.value = value;
+		this.amount = value;
 	}
 }	

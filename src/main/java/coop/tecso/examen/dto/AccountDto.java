@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import coop.tecso.examen.model.Movement;
+import coop.tecso.examen.model.TypeOfCurrency;
 
 public class AccountDto implements Serializable{
 
@@ -11,7 +12,7 @@ public class AccountDto implements Serializable{
 	
 	private Long id;
 	private Long accountNumber;
-	private String currency;
+	private TypeOfCurrency currency;
 	private Long balance;
 	private List<Movement> movements;
 	
@@ -27,11 +28,11 @@ public class AccountDto implements Serializable{
 	public void setAccountNumber(Long accountNumber) {
 		this.accountNumber = accountNumber;
 	}
-	public String getCurrency() {
+	public TypeOfCurrency getCurrency() {
 		return currency;
 	}
-	public void setCurrency(String currency) {
-		this.currency = currency;
+	public void setCurrency(TypeOfCurrency typeOfCurrency) {
+		this.currency = typeOfCurrency;
 	}
 	public Long getBalance() {
 		return balance;

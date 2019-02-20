@@ -55,24 +55,17 @@ public class AccountController {
 	// Delete account
 	@DeleteMapping(path = "/eliminar-cuenta")
 	public void deleteAccount(@RequestParam("accountId") Long accountId) throws ResponseStatusException  {
-		try {
-			Optional<Account> account = accountRepository.findById(accountId);
-			System.out.println(account.get());
-			if(account.get().getMovements().size() == 0) {
-				System.out.println("entra");
-				accountRepository.deleteById(accountId);
-				
-			}
-			else {
-				System.out.println("sale");
-				throw new ResponseStatusException(
-				          HttpStatus.CONFLICT, "La cuenta que intentas eliminar tiene movimientos asociados");
-			}
-		}
-		catch (Exception e){
+		Optional<Account> account = accountRepository.findById(accountId);
+		
+		if(!account.isPresent()) {
 			throw new ResponseStatusException(
 			          HttpStatus.NOT_FOUND, "El ID no corresponde a una cuenta existente");
 		}
 		
+		if(account.get().getMovements().size() > 0) {
+			throw new ResponseStatusException(
+			          HttpStatus.CONFLICT, "La cuenta que intentas eliminar tiene movimientos asociados");
+		}
+		accountRepository.deleteById(accountId);
 	}
 }
