@@ -1,13 +1,43 @@
-<div *ngIf="movement" class="movement">
-  <h2>Descripcion: {{movement.description}}</h2>
-  <div><span>Moneda: </span>{{movement.typeOfMovement}}</div>
-  <div><span>Fecha: </span>{{movement.date | date:'medium'}}</div>
-  <div><span>Saldo: </span>{{movement.amount}}</div>
+<div *ngIf="!isNew">
+  <div *ngIf="movement" class="movement">
+    <h2>Descripcion: {{movement.description}}</h2>
+    <div><span>Tipo de movimiento: </span>{{movement.typeOfMovement}}</div>
+    <div><span>Fecha: </span>{{movement.date | date:'medium'}}</div>
+    <div><span>Saldo: </span>{{movement.amount}}</div>
 
-  <div style="margin-top: 5px">
-    <button (click)="goBack()">
-      Volver
-    </button>
+    <div style="margin-top: 5px">
+      <button (click)="goBack()">
+        Volver
+      </button>
+    </div>
   </div>
 </div>
- 
+
+
+<div *ngIf="isNew">
+    <h2>Nuevo movimiento</h2>
+    <label> Descripción: 
+        <input [(ngModel)]="newMovement.description" placeholder="Descripción"/>
+    </label> <br>
+    <label>Tipo de movimiento: 
+        <select [(ngModel)]="newMovement.typeOfMovement">
+          <option value='CREDIT'>CREDIT</option>
+          <option value='DEBIT'>DEBIT</option>
+        </select>
+    </label><br>
+    <label>Fecha: 
+        <input type="datetime-local" [(ngModel)]="newMovement.date" placeholder="Descripción"/>
+    </label><br>
+    <label>Saldo: 
+        <input type="number" [(ngModel)]="newMovement.amount" placeholder="Descripción"/>
+    </label><br>
+
+    <div style="margin-top: 5px">
+      <button (click)="goBack()">
+        Volver
+      </button>
+      <button (click)="saveMovement()">
+        Grabar
+      </button>
+    </div>
+</div>

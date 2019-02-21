@@ -17,6 +17,7 @@ const appRoutes: Routes = [
   {path: '', component: AccountComponent },
   {path: 'movement/:id', component: MovementComponent},
   {path: 'movement-details/:id', component: MovementDetailComponent},
+  {path: 'movement-details/new/:type', component: MovementDetailComponent},
   {path: 'account', component: AccountComponent},
   {path: 'account-details/:id', component: AccountDetailComponent},
   {path: 'account-details/new/:type', component: AccountDetailComponent}

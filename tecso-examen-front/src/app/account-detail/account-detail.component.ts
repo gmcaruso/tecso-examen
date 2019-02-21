@@ -30,9 +30,9 @@ export class AccountDetailComponent implements OnInit {
   saveAccount() {
     this.rest.postAccount(this.newAccount).subscribe((data: {}) => {
       console.log(data);
-      this.account = data;
     });
-    this.location.back();
+    this.router.navigateByUrl('');
+    window.location.reload();
   }
 
 }

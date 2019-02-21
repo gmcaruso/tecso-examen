@@ -8,6 +8,10 @@
   </li>
 </ul>
 
+<div *ngIf="accounts.length === 0">
+    <p style="color: red">No existen cuentas creadas</p>
+  </div>
+
 <div style="margin-top: 5px">
   <button routerLink="/account-details/new/{{true}}">
     Nueva cuenta

@@ -9,7 +9,7 @@
         Volver
       </button>
   
-      <button routerLink="/movement/{{account.id}}" style="margin-left: 5px">
+      <button routerLink="/movement-details/new/{{account.id}}" style="margin-left: 5px">
         Agregar movimiento
       </button>
 
@@ -32,7 +32,6 @@
           <option value='DOLARES'>Dolares</option>
           <option value='EUROS'>Euros</option>
         </select>
-        <!-- <input [(ngModel)]="newAccount.currency" placeholder="Tipo de moneda" type="text"/> -->
       </label><br>
       <label>Saldo:
         <input [(ngModel)]="newAccount.balance" placeholder="Saldo"/>

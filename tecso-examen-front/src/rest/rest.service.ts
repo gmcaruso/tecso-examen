@@ -39,6 +39,12 @@ export class RestService {
   }
 
 //////////////////////////////////////// MOVIMIENTOS ////////////////////////////////////////
+
+  patchMovement(idAccount, movement): Observable<any> {
+    console.log(movement);
+    return this.http.
+      patch<any>(this.endpoint + 'movement/agregar-movimiento?accountId=' + idAccount, JSON.stringify(movement), this.httpOptions);
+  }
   getMovement(id): Observable<any> {
     return this.http.get(this.endpoint + 'movement/encontrar-movimiento?accountId=' + id).pipe(
       map(this.extractData));
