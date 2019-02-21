@@ -1,0 +1,13 @@
+<div *ngIf="movement" class="movement">
+  <h2>Descripcion: {{movement.description}}</h2>
+  <div><span>Moneda: </span>{{movement.typeOfMovement}}</div>
+  <div><span>Fecha: </span>{{movement.date | date:'medium'}}</div>
+  <div><span>Saldo: </span>{{movement.amount}}</div>
+
+  <div style="margin-top: 5px">
+    <button (click)="goBack()">
+      Volver
+    </button>
+  </div>
+</div>
+ 

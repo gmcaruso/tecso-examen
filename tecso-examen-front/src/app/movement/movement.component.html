@@ -1,0 +1,19 @@
+<h2>Lista de Movimientos</h2>
+
+<ul class="movements">
+  <li *ngFor="let m of movements; let i=index;">
+    <a routerLink="/movement-details/{{m.id}}">
+      <span class="badge">{{i+1}}</span> {{m.description}}
+    </a>
+  </li>
+</ul>
+
+<div *ngIf="movements.length === 0">
+  <p style="color: red">Esta cuenta no posee movimientos</p>
+</div>
+
+<div style="margin-top: 5px">
+  <button (click)=goBack()>
+    Volver
+  </button>
+</div>

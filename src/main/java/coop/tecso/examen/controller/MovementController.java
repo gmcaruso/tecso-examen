@@ -58,6 +58,21 @@ public class MovementController {
 	    return result;
 	}
 	
+	// Get one movement
+	@GetMapping("/encontrar-movimiento")
+	public Movement findMovement(@RequestParam("accountId") Long accountId) {
+		Movement entity = movementRepository.findById(accountId).get();
+		MovementDto dto = new MovementDto();
+		dto.setId(entity.getId());
+		dto.setDate(entity.getDate());
+		dto.setDescription(entity.getDescription());
+		dto.setTypeOfMovement(entity.getTypeOfMovement());
+		dto.setValue(entity.getAmount());
+	    
+		return entity;
+	}
+		
+	
 	// Add movement to account
 	@PatchMapping("/agregar-movimiento")
 	public void addMovementTo(@RequestParam("accountId") Long accountId, @RequestBody Movement movement) {
@@ -72,10 +87,7 @@ public class MovementController {
 	}
 	
 	private void checkTypeOfMovement(Account account, Movement movement) {
-		
-		System.out.println("check type");
 		if (movement.getTypeOfMovement() == TypeOfMovement.CREDIT ) {
-			System.out.println("Credit");
 			account.setBalance(account.getBalance() + movement.getAmount());
 			this.updateAccount(account, movement);
 		}
@@ -106,7 +118,6 @@ public class MovementController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST , message);
 		}
 		else {
-			System.out.println("Debitaaa");
 			account.setBalance(account.getBalance() - movement.getAmount());
 			
 			updateAccount(account, movement);

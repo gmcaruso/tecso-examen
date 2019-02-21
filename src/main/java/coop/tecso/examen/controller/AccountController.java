@@ -29,7 +29,6 @@ public class AccountController {
 	// Get All accounts
 	@GetMapping("/listar-cuentas")
 	public List<AccountDto> listAccounts() {
-		
 		List<AccountDto> result = new ArrayList<>();
 		for (Account entity : accountRepository.findAll()) {
 			AccountDto dto = new AccountDto();
@@ -44,6 +43,22 @@ public class AccountController {
 		
 	    return result;
 	}
+	
+	// Get one account
+	@GetMapping("/encontrar-cuenta")
+	public Account findAccount(@RequestParam("accountId") Long accountId) {
+		Account entity = accountRepository.findById(accountId).get();
+		AccountDto dto = new AccountDto();
+		dto.setId(entity.getId());
+		dto.setAccountNumber(entity.getAccountNumber());
+		dto.setBalance(entity.getBalance());
+		dto.setCurrency(entity.getCurrency());
+		dto.setMovements(entity.getMovements());
+	    
+		return entity;
+	}
+	
+	
 	
 	// Create account
 	@PostMapping(path = "/crear-cuenta", consumes = "application/json")

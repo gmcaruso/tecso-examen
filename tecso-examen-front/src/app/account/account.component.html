@@ -1,0 +1,15 @@
+<h2>Lista de cuentas</h2>
+
+<ul class="accounts">
+  <li *ngFor="let a of accounts; let i=index;">
+    <a routerLink="/account-details/{{a.id}}">
+      <span class="badge">{{i+1}}</span> {{a.accountNumber}}
+    </a>
+  </li>
+</ul>
+
+<div style="margin-top: 5px">
+  <button routerLink="/account-details/new/{{true}}">
+    Nueva cuenta
+  </button>
+</div>

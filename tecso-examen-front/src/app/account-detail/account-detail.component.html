@@ -1,0 +1,51 @@
+<div *ngIf="!isNew">
+  <div *ngIf="account" class="account">
+    <h2>Nro de cuenta: {{account.accountNumber}}</h2>
+    <div><span>Moneda: </span>{{account.currency}}</div>
+    <div><span>Saldo: </span>{{account.balance}}</div>
+  
+    <div style="margin-top: 5px">
+      <button routerLink="">
+        Volver
+      </button>
+  
+      <button routerLink="/movement/{{account.id}}" style="margin-left: 5px">
+        Agregar movimiento
+      </button>
+
+      <button routerLink="/movement/{{account.id}}" style="margin-left: 5px">
+        Ver movimientos
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isNew">
+  <h2>Nueva cuenta</h2>
+    <div>
+      <label>Nro de cuenta:
+        <input [(ngModel)]="newAccount.accountNumber" placeholder="Nro de cuenta" type="number"/>
+      </label><br>
+      <label>Tipo de moneda:
+        <select [(ngModel)]="newAccount.currency">
+          <option value='PESOS'>Pesos</option>
+          <option value='DOLARES'>Dolares</option>
+          <option value='EUROS'>Euros</option>
+        </select>
+        <!-- <input [(ngModel)]="newAccount.currency" placeholder="Tipo de moneda" type="text"/> -->
+      </label><br>
+      <label>Saldo:
+        <input [(ngModel)]="newAccount.balance" placeholder="Saldo"/>
+      </label><br>
+    </div>
+
+    <div style="margin-top: 5px">
+      <button routerLink="">
+        Volver
+      </button>
+  
+      <button (click)="saveAccount()" style="margin-left: 5px">
+        Grabar
+      </button>
+    </div>
+</div>
