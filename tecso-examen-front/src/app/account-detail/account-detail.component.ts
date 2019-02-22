@@ -37,9 +37,9 @@ export class AccountDetailComponent implements OnInit {
   }
 
   deleteAccount() {
-    const resultado = this.rest.deleteAccount(this.route.snapshot.params['id'])
+    this.rest.deleteAccount(this.route.snapshot.params['id'])
       .subscribe(
-        data => this.redirect,
+        data => this.redirect(),
         error => this.error = error
       );
   }
