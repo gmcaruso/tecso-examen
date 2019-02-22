@@ -12,6 +12,7 @@ export class AccountDetailComponent implements OnInit {
 
   account: any;
   isNew: false;
+  error: null;
   typeOfCurrency: ['PESOS', 'EUROS', 'DOLARES'];
   @Input()  newAccount = {accountNumber: '', currency: 'PESOS', balance: '', movements: []};
 
@@ -35,4 +36,16 @@ export class AccountDetailComponent implements OnInit {
     window.location.reload();
   }
 
+  deleteAccount() {
+    const resultado = this.rest.deleteAccount(this.route.snapshot.params['id'])
+      .subscribe(
+        data => this.redirect,
+        error => this.error = error
+      );
+  }
+
+  private redirect() {
+    this.router.navigateByUrl('');
+    window.location.reload();
+  }
 }

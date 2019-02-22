@@ -87,6 +87,9 @@ public class MovementController {
 	}
 	
 	private void checkTypeOfMovement(Account account, Movement movement) {
+		if (movement.getAmount() == 0) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST , "El monto del movimiento debe ser mayor a 0 (cero)");
+		}
 		if (movement.getTypeOfMovement() == TypeOfMovement.CREDIT ) {
 			account.setBalance(account.getBalance() + movement.getAmount());
 			this.updateAccount(account, movement);

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -38,12 +38,22 @@ export class RestService {
       map(this.extractData));
   }
 
+  deleteAccount(id): Observable<any> {
+    return this.http.delete(this.endpoint + 'account/eliminar-cuenta?accountId=' + id)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
 //////////////////////////////////////// MOVIMIENTOS ////////////////////////////////////////
 
   patchMovement(idAccount, movement): Observable<any> {
     console.log(movement);
     return this.http.
-      patch<any>(this.endpoint + 'movement/agregar-movimiento?accountId=' + idAccount, JSON.stringify(movement), this.httpOptions);
+      patch<any>(this.endpoint + 'movement/agregar-movimiento?accountId=' + idAccount, JSON.stringify(movement), this.httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
   getMovement(id): Observable<any> {
     return this.http.get(this.endpoint + 'movement/encontrar-movimiento?accountId=' + id).pipe(
@@ -53,5 +63,11 @@ export class RestService {
   getMovements(id): Observable<any> {
     return this.http.get(this.endpoint + 'movement/listar-movimientos?accountId=' + id).pipe(
       map(this.extractData));
+  }
+
+  private handleError(error) {
+    let errorMessage = '';
+    errorMessage = `Error: ${error.error.message}`;
+    return throwError(errorMessage);
   }
 }

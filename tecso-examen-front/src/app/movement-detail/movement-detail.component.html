@@ -3,7 +3,7 @@
     <h2>Descripcion: {{movement.description}}</h2>
     <div><span>Tipo de movimiento: </span>{{movement.typeOfMovement}}</div>
     <div><span>Fecha: </span>{{movement.date | date:'medium'}}</div>
-    <div><span>Saldo: </span>{{movement.amount}}</div>
+    <div><span>Monto: </span>{{movement.amount}}</div>
 
     <div style="margin-top: 5px">
       <button (click)="goBack()">
@@ -26,10 +26,10 @@
         </select>
     </label><br>
     <label>Fecha: 
-        <input type="datetime-local" [(ngModel)]="newMovement.date" placeholder="Descripción"/>
+        <input type="datetime-local" [(ngModel)]="newMovement.date" placeholder="Fecha"/>
     </label><br>
-    <label>Saldo: 
-        <input type="number" [(ngModel)]="newMovement.amount" placeholder="Descripción"/>
+    <label>Monto: 
+        <input type="number" [(ngModel)]="newMovement.amount" placeholder="Monto"/>
     </label><br>
 
     <div style="margin-top: 5px">
@@ -40,4 +40,8 @@
         Grabar
       </button>
     </div>
+</div>
+
+<div>
+  <p style="color: red">{{error}}</p>
 </div>

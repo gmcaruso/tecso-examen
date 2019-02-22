@@ -9,12 +9,16 @@
         Volver
       </button>
   
-      <button routerLink="/movement-details/new/{{account.id}}" style="margin-left: 5px">
+      <button color="green" routerLink="/movement-details/new/{{account.id}}" style="margin-left: 5px">
         Agregar movimiento
       </button>
 
-      <button routerLink="/movement/{{account.id}}" style="margin-left: 5px">
+      <button color="blue" routerLink="/movement/{{account.id}}" style="margin-left: 5px">
         Ver movimientos
+      </button>
+
+      <button color="red" style="margin-left: 5px" (click)="deleteAccount()">
+        Borrar cuenta
       </button>
     </div>
   </div>
@@ -47,4 +51,8 @@
         Grabar
       </button>
     </div>
+</div>
+
+<div>
+  <p style="color: red">{{error}}</p>
 </div>

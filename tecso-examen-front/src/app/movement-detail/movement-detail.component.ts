@@ -10,6 +10,7 @@ import { Location } from '@angular/common';
 })
 export class MovementDetailComponent implements OnInit {
 
+  error: null;
   movement: any;
   isNew: false;
   typeOfMovement: ['CREDIT', 'DEBIT'];
@@ -32,10 +33,11 @@ export class MovementDetailComponent implements OnInit {
   }
 
   saveMovement() {
-    this.rest.patchMovement(this.route.snapshot.params['type'], this.newMovement).subscribe((data: {}) => {
-      console.log(data);
-    });
-    this.goBack();
+    this.rest.patchMovement(this.route.snapshot.params['type'], this.newMovement)
+    .subscribe(
+      data => this.goBack(),
+      error => this.error = error
+    );
   }
 
 }
